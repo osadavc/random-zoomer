@@ -5,6 +5,24 @@ interface UserI extends mongoose.Document {
   name: string;
   email: string;
   picture: string;
+  meetings: MeetingsI[];
+}
+
+export interface MeetingsI {
+  _id?: string;
+  meetingId: number;
+  meetingUUID: string;
+  meetingName: string;
+  meetingStart: Date;
+  isMeetingEnded: boolean;
+  participants?: ParticipantI[];
+}
+
+interface ParticipantI {
+  userId: string;
+  userName?: string;
+  userEmail: string;
+  isInTheMeeting: boolean;
 }
 
 const userSchema = new mongoose.Schema<UserI>({
@@ -21,6 +39,23 @@ const userSchema = new mongoose.Schema<UserI>({
     type: String,
     required: true,
   },
+  meetings: [
+    {
+      meetingId: { type: String, required: true },
+      meetingUUID: { type: String, required: true },
+      meetingName: { type: String, required: true },
+      meetingStart: { type: Date, required: true },
+      isMeetingEnded: { type: Boolean, required: true },
+      participants: [
+        {
+          userId: { type: String, required: true },
+          userName: { type: String, required: true },
+          userEmail: { type: String, required: true },
+          isInTheMeeting: { type: Boolean, required: true },
+        },
+      ],
+    },
+  ],
 });
 
 export default (mongoose.models.User as mongoose.Model<UserI>) ||

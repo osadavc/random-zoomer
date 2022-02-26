@@ -1,6 +1,7 @@
 import { JWT } from "next-auth/jwt";
 import { FC } from "react";
-import ZoomLoginButton from "./ZoomLoginButton";
+import GoToDashboard from "../Common/GoToDashboard";
+import ZoomLoginButton from "../Common/ZoomLoginButton";
 
 interface IntroProps {
   user: JWT;
@@ -14,8 +15,8 @@ const Intro: FC<IntroProps> = ({ user }) => {
           Select A Random Participant From Your Zoom Meeting
         </h1>
         <h3 className="mt-1 text-xl text-zinc-500">Justice Prioritized 😉</h3>
-        <div className="mt-5 flex justify-center">
-          {!user ? <ZoomLoginButton /> : null}
+        <div className="mt-4 flex justify-center">
+          {!user ? <ZoomLoginButton /> : <GoToDashboard />}
         </div>
       </div>
     </div>

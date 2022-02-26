@@ -9,6 +9,11 @@ export default NextAuth({
     ZoomProvider({
       clientId: ZOOM_CLIENT_ID!,
       clientSecret: ZOOM_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          scope: ["meeting:read", "meeting:write"].join(" "),
+        },
+      },
     }),
   ],
   pages: {

@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { getToken, JWT } from "next-auth/jwt";
 import Header from "../components/Common/Header";
-import Intro from "../components/Common/Intro";
+import Intro from "../components/Home/Intro";
 
 interface DashboardProps {
   user: JWT;

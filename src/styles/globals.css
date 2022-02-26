@@ -3,3 +3,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: Nunito, sans-serif;
+  overflow: overlay;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 5px solid #00000000;
+  background-clip: padding-box;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border: 5px solid #00000000;
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #c7c7c7;
+}

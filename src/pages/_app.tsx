@@ -11,6 +11,11 @@ const MyApp = ({
     <SessionProvider session={session}>
       <Head>
         <title>Random Zoomer</title>
+        <link
+          rel="shortcut icon"
+          href="/images/random-zoomer-logo.png"
+          type="image/x-icon"
+        />
       </Head>
       <Component {...pageProps} />
     </SessionProvider>
