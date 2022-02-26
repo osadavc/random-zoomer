@@ -25,7 +25,6 @@ const handler: NextApiHandler = async (req, res) => {
         const { participant_user_id, user_name, user_id } = participant;
 
         if (host_id == participant_user_id) {
-          console.log("HOST 😐");
           break;
         }
 
@@ -56,7 +55,6 @@ const handler: NextApiHandler = async (req, res) => {
         const { participant_user_id, user_id } = participant;
 
         if (host_id == participant_user_id) {
-          console.log("HOST 😐");
           break;
         }
 
@@ -80,6 +78,7 @@ const handler: NextApiHandler = async (req, res) => {
         }
 
         foundParticipant.isInTheMeeting = false;
+        await foundUser.save();
 
         break;
       }

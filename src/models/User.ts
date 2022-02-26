@@ -21,7 +21,7 @@ export interface MeetingsI {
 interface ParticipantI {
   userId: string;
   userName?: string;
-  userEmail: string;
+  userEmail?: string;
   isInTheMeeting: boolean;
 }
 
@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema<UserI>({
         {
           userId: { type: String, required: true },
           userName: { type: String, required: true },
-          userEmail: { type: String, required: true },
+          userEmail: { type: String, required: false },
           isInTheMeeting: { type: Boolean, required: true },
         },
       ],
