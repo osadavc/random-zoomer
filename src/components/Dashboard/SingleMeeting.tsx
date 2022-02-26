@@ -18,12 +18,12 @@ const SingleMeeting: FC<SingleMeetingProps> = ({
 
   return (
     <div
-      className={`flex h-80 w-full flex-col justify-between rounded-md bg-gray-100 text-center ${
-        isMeetingEnded && "select-none opacity-80"
+      className={`flex h-60 w-full flex-col justify-between rounded-md bg-gray-100 text-center md:h-80 ${
+        isMeetingEnded && "select-none opacity-70"
       }`}
     >
       <div className="flex h-full flex-col justify-between p-5">
-        <div className="space-y-2">
+        <div className="space-y-3">
           <h3>
             Meeting ID:{" "}
             <span className="ml-1 rounded-md bg-gray-200 p-1 font-semibold text-zinc-700">
