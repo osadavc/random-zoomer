@@ -36,6 +36,16 @@ const handler: NextApiHandler = async (req, res) => {
           throw new Error(`User with zoomId ${host_id} not found`);
         }
 
+        const existingMeeting = foundUser.meetings.find(
+          (meeting) => meeting.meetingUUID === uuid
+        );
+
+        if (existingMeeting) {
+          throw new Error(
+            `Meeting with uuid ${uuid} already exists for user ${host_id}`
+          );
+        }
+
         foundUser.meetings.push({
           meetingId: Number(id),
           meetingUUID: uuid,

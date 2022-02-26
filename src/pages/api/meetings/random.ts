@@ -12,6 +12,10 @@ const handler: NextApiHandler = async (req, res) => {
 
     const { meetingUUID } = req.body;
 
+    if (!meetingUUID) {
+      throw new Error("No meetingUUID provided");
+    }
+
     const foundMeeting = (
       await User.findOne({ zoomId: token.sub })
     )?.meetings.find((meeting) => meeting.meetingUUID === meetingUUID);
@@ -31,7 +35,7 @@ const handler: NextApiHandler = async (req, res) => {
 
     res.status(200).json({
       status: 200,
-      data: randomChosenParticipant,
+      result: randomChosenParticipant,
     });
   } catch (error: any) {
     console.log(error);

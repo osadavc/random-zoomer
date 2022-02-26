@@ -40,6 +40,16 @@ const handler: NextApiHandler = async (req, res) => {
           throw new Error(`Meeting with uuid ${uuid} not found`);
         }
 
+        const existingParticipant = foundMeeting.participants?.find(
+          (participant) => participant.userId == user_id
+        );
+
+        if (existingParticipant) {
+          throw new Error(
+            `Participant with userId ${user_id} already exists in meeting ${uuid}`
+          );
+        }
+
         foundMeeting?.participants?.push({
           isInTheMeeting: true,
           userId: user_id,

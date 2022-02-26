@@ -1,20 +1,43 @@
 import { MeetingsI } from "../../models/User";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
+import { API } from "../../service/API";
+import { ChosenUser } from "../../pages/dashboard";
+import ProgressBar from "@badrap/bar-of-progress";
 
 interface SingleMeetingProps {
   meeting: MeetingsI;
+  setChosenUser: Dispatch<SetStateAction<ChosenUser | null>>;
 }
 
 const SingleMeeting: FC<SingleMeetingProps> = ({
-  meeting: { meetingId, isMeetingEnded, meetingName, participants },
+  meeting: {
+    meetingId,
+    isMeetingEnded,
+    meetingName,
+    participants,
+    meetingUUID,
+  },
+  setChosenUser,
 }) => {
   let participantsInTheMeeting = 0;
+  const progress = new ProgressBar();
 
   if (!isMeetingEnded) {
     participantsInTheMeeting = participants?.filter(
       (participant) => participant.isInTheMeeting == true
     ).length!;
   }
+
+  const getRandomParticipant = async () => {
+    progress.start();
+
+    const {
+      data: { result },
+    } = await API.post("/meetings/random", { meetingUUID });
+
+    setChosenUser(result);
+    progress.finish();
+  };
 
   return (
     <div
@@ -46,7 +69,10 @@ const SingleMeeting: FC<SingleMeetingProps> = ({
               </span>{" "}
               Participants Are In The Meeting
             </div>
-            <button className="rounded-md bg-gray-300 py-1 px-2 font-semibold text-gray-800 ring-gray-300 ring-opacity-25 focus:ring">
+            <button
+              className="rounded-md bg-gray-300 py-1 px-2 font-semibold text-gray-800 ring-gray-300 ring-opacity-25 focus:ring"
+              onClick={getRandomParticipant}
+            >
               Select A Random Participant
             </button>
           </>

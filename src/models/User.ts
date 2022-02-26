@@ -18,7 +18,7 @@ export interface MeetingsI {
   participants?: ParticipantI[];
 }
 
-interface ParticipantI {
+export interface ParticipantI {
   userId: string;
   userName?: string;
   userEmail?: string;

@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.1.2",
+    "@headlessui/react": "^1.5.0",
     "axios": "^0.26.0",
     "mongoose": "^6.2.3",
     "next": "12.1.0",
