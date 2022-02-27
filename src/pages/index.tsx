@@ -2,6 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import { getToken, JWT } from "next-auth/jwt";
 import Header from "../components/Common/Header";
 import Intro from "../components/Home/Intro";
+import Steps from "../components/Home/Steps";
 
 interface DashboardProps {
   user: JWT;
@@ -9,9 +10,10 @@ interface DashboardProps {
 
 const Home: NextPage<DashboardProps> = ({ user }) => {
   return (
-    <div className="w min-h-screen bg-zinc-50 font-nunito">
+    <div className="min-h-screen bg-zinc-50 font-nunito">
       <Header user={user} />
       <Intro user={user} />
+      <Steps />
     </div>
   );
 };
