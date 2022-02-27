@@ -70,15 +70,22 @@ const SingleMeeting: FC<SingleMeetingProps> = ({
               <span className="font-semibold text-zinc-700">
                 {participantsInTheMeeting}
               </span>{" "}
-              Participant{participantsInTheMeeting > 1 && "s"}{" "}
-              {participantsInTheMeeting > 1 ? "Are" : "Is"} In The Meeting
+              Participant
+              {participantsInTheMeeting > 1 ||
+                (participantsInTheMeeting == 0 && "s")}{" "}
+              {participantsInTheMeeting > 1 || participantsInTheMeeting == 0
+                ? "Are"
+                : "Is"}{" "}
+              In The Meeting
             </div>
-            <button
-              className="rounded-md bg-gray-300 py-1 px-2 font-semibold text-gray-800 ring-gray-300 ring-opacity-25 focus:ring"
-              onClick={getRandomParticipant}
-            >
-              Select A Random Participant
-            </button>
+            {participantsInTheMeeting > 0 && (
+              <button
+                className="rounded-md bg-gray-300 py-1 px-2 font-semibold text-gray-800 ring-gray-300 ring-opacity-25 focus:ring"
+                onClick={getRandomParticipant}
+              >
+                Select A Random Participant
+              </button>
+            )}
           </>
         )}
       </div>
