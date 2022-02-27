@@ -13,7 +13,7 @@ interface DashboardProps {
 }
 
 export interface ChosenUser extends ParticipantI {
-  meetingID: string;
+  meetingId: string;
 }
 
 const Dashboard: NextPage<DashboardProps> = ({ user, meetings }) => {
@@ -35,7 +35,7 @@ const Dashboard: NextPage<DashboardProps> = ({ user, meetings }) => {
             <Dialog.Title className="mb-5 text-lg font-semibold leading-9 text-zinc-800">
               A Random Participant From Meeting ID{" "}
               <span className="ml-1 rounded-md bg-gray-200 p-1 font-bold text-zinc-700">
-                {chosenUser?.meetingID}
+                {chosenUser?.meetingId}
               </span>
             </Dialog.Title>
 
@@ -44,7 +44,7 @@ const Dashboard: NextPage<DashboardProps> = ({ user, meetings }) => {
 
               <div className="space-y-3 rounded-md bg-zinc-100 py-2">
                 <h4>
-                  User ID:{" "}
+                  User's ID:{" "}
                   <span className="ml-2 rounded-md bg-zinc-200 px-1 py-[0.15rem] font-bold text-zinc-700">
                     {chosenUser?.userId}
                   </span>
@@ -55,12 +55,14 @@ const Dashboard: NextPage<DashboardProps> = ({ user, meetings }) => {
                     {chosenUser?.userName}
                   </span>
                 </h4>
-                <h4>
-                  User's Email :{" "}
-                  <span className="ml-2 rounded-md bg-zinc-200 px-1 py-[0.15rem] font-bold text-zinc-700">
-                    {chosenUser?.userEmail}
-                  </span>
-                </h4>
+                {chosenUser?.userEmail && (
+                  <h4>
+                    User's Email :{" "}
+                    <span className="ml-2 rounded-md bg-zinc-200 px-1 py-[0.15rem] font-bold text-zinc-700">
+                      {chosenUser?.userEmail}
+                    </span>
+                  </h4>
+                )}
               </div>
             </div>
           </div>

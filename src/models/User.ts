@@ -16,6 +16,7 @@ export interface MeetingsI {
   meetingStart: Date;
   isMeetingEnded: boolean;
   participants?: ParticipantI[];
+  lastRandomParticipantId?: string;
 }
 
 export interface ParticipantI {
@@ -46,6 +47,7 @@ const userSchema = new mongoose.Schema<UserI>({
       meetingName: { type: String, required: true },
       meetingStart: { type: Date, required: true },
       isMeetingEnded: { type: Boolean, required: true },
+      lastRandomParticipantId: { type: String, required: false },
       participants: [
         {
           userId: { type: String, required: true },

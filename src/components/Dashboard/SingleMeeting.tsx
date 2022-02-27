@@ -20,7 +20,10 @@ const SingleMeeting: FC<SingleMeetingProps> = ({
   setChosenUser,
 }) => {
   let participantsInTheMeeting = 0;
-  const progress = new ProgressBar();
+  const progress = new ProgressBar({
+    size: 3,
+    color: "#5282ef",
+  });
 
   if (!isMeetingEnded) {
     participantsInTheMeeting = participants?.filter(
@@ -35,7 +38,7 @@ const SingleMeeting: FC<SingleMeetingProps> = ({
       data: { result },
     } = await API.post("/meetings/random", { meetingUUID });
 
-    setChosenUser(result);
+    setChosenUser({ ...result, meetingId });
     progress.finish();
   };
 
