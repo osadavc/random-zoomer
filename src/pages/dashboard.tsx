@@ -80,6 +80,11 @@ const Dashboard: NextPage<DashboardProps> = ({ user, meetings }) => {
             />
           ))}
         </div>
+        {meetings.length == 0 && (
+          <div>
+            No Meetings In Your Account, Start A Meeting And Check Again
+          </div>
+        )}
       </div>
     </div>
   );
